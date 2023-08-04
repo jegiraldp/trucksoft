@@ -14,7 +14,7 @@ export const getCategories = async (req, res) => {
 export const getCategory = async (req, res) => {
   try {
     const [result] = await pool.query("select * from categorias where id = ?", [
-      req.params.id,
+      req.params.id
     ]);
     if (result.length === 0)
       return res.status(404).json({ mensaje: "Category does not exists" });

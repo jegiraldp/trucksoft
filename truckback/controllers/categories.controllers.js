@@ -41,6 +41,8 @@ export const updateCategory = async (req, res) => {
       req.body,
       req.params.id,
     ]);
+    if (result.affectedRows === 0)
+      return res.status(404).json({ mensaje: "Category does not exists" });
     res.json("Category updated");
   } catch (error) {
     return res.status(500).json({ mensaje: error.message });

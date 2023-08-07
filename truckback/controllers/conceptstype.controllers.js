@@ -59,7 +59,7 @@ export const updateConceptType = async (req, res) => {
       ]);
       if (resultado.affectedRows === 0)
         return res.status(404).json({ mensaje: "Concept type does not exists" });
-      return res.sendStatus(204);
+      res.json("Concept type deleted");
     } catch (error) {
       return res.status(500).json({ mensaje: error.message });
     }

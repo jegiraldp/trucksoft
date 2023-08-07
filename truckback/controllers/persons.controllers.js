@@ -80,7 +80,7 @@ export const deletePerson = async (req, res) => {
     ]);
     if (resultado.affectedRows === 0)
       return res.status(404).json({ mensaje: "Person does not exists" });
-    return res.sendStatus(204);
+    res.json("Person deleted");
   } catch (error) {
     return res.status(500).json({ mensaje: error.message });
   }

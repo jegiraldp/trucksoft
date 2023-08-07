@@ -12,6 +12,13 @@ import vehiculestypeRoutes from "./routes/vehiculestype.routes.js";
 import vehiculesRoutes from "./routes/vehicules.routes.js";
 import schedulesRoutes from "./routes/schedules.routes.js";
 import budgetsRoutes from "./routes/budgets.routes.js";
+import repairsorderRoutes from "./routes/repairsorder.routes.js";
+import servicesRoutes from "./routes/services.routes.js";
+import ordersdetailRoutes from "./routes/ordersdetail.routes.js";
+import boxesRoutes from "./routes/boxes.routes.js";
+import buyesRoutes from "./routes/buyes.routes.js";
+import salesRoutes from "./routes/sales.routes.js";
+import salesdetailRoutes from "./routes/salesdetail.routers.js";
 
 const app = express();
 //const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -28,6 +35,13 @@ app.use(vehiculestypeRoutes);
 app.use(vehiculesRoutes);
 app.use(schedulesRoutes);
 app.use(budgetsRoutes);
+app.use(repairsorderRoutes);
+app.use(servicesRoutes);
+app.use(ordersdetailRoutes);
+app.use(boxesRoutes);
+app.use(buyesRoutes);
+app.use(salesRoutes);
+app.use(salesdetailRoutes);
 
 //app.use(express.static(join(__dirname, '../clienteTareas/dist')))
 

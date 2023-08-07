@@ -9,6 +9,9 @@ import conceptstypeRoutes from "./routes/conceptstype.routes.js";
 import payrollsRoutes from "./routes/payrolls.routes.js";
 import conceptsRoutes from "./routes/concepts.routes.js";
 import vehiculestypeRoutes from "./routes/vehiculestype.routes.js";
+import vehiculesRoutes from "./routes/vehicules.routes.js";
+import schedulesRoutes from "./routes/schedules.routes.js";
+import budgetsRoutes from "./routes/budgets.routes.js";
 
 const app = express();
 //const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -22,6 +25,9 @@ app.use(conceptstypeRoutes);
 app.use(payrollsRoutes);
 app.use(conceptsRoutes);
 app.use(vehiculestypeRoutes);
+app.use(vehiculesRoutes);
+app.use(schedulesRoutes);
+app.use(budgetsRoutes);
 
 //app.use(express.static(join(__dirname, '../clienteTareas/dist')))
 

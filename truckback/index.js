@@ -19,6 +19,7 @@ import boxesRoutes from "./routes/boxes.routes.js";
 import buyesRoutes from "./routes/buyes.routes.js";
 import salesRoutes from "./routes/sales.routes.js";
 import salesdetailRoutes from "./routes/salesdetail.routers.js";
+import usersRoutes from "./routes/users.routes.js";
 
 const app = express();
 //const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -42,6 +43,7 @@ app.use(boxesRoutes);
 app.use(buyesRoutes);
 app.use(salesRoutes);
 app.use(salesdetailRoutes);
+app.use(usersRoutes);
 
 //app.use(express.static(join(__dirname, '../clienteTareas/dist')))
 

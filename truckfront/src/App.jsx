@@ -7,9 +7,9 @@ import HomeAdmin from './components/HomeAdmin.jsx'
 function App() {
   return (
    <>
-   <HomeAdmin/>
-   <hr />
+   Home
     <Routes>
+    <Route path="/homeadmin" element={<HomeAdmin/>}/>
       <Route path="/categories" element={<CategoriesPage/>}/>
       <Route path="/categories/new" element={<CategoriesForm/>}/>
     </Routes >

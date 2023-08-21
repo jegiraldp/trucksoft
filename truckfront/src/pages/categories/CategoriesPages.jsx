@@ -1,10 +1,10 @@
 import React from "react";
-import HomeAdminNav from "../../components/HomeAdminNav.jsx";
+import HomeAdmin from "../../components/HomeAdmin.jsx";
 
 function CategoriesPage() {
   return (
     <>
-      <HomeAdminNav></HomeAdminNav>
+      <HomeAdmin/>
       <div>Categories....</div>
     </>
   );

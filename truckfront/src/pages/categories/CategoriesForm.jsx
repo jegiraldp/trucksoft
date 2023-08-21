@@ -1,11 +1,19 @@
 import React from "react";
-import HomeAdminNav from "../../components/HomeAdminNav.jsx";
+import HomeAdmin from "../../components/HomeAdmin.jsx";
+import { Form, Formik } from "formik";
 
 function CategoriesForm() {
   return (
     <>
-      <HomeAdminNav/>
-      <div>New Category....</div>
+      <HomeAdmin />
+      <h3>Add category</h3>
+      <Formik>
+        <Form>
+          <label>Name</label>
+          <input type="text" name="Name" placeholder="Write Category name"/>
+          <button>Save</button>
+        </Form>
+      </Formik>
     </>
   );
 }

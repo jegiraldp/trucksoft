@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import HomeAdminNav from "../../components/HomeAdminNav.jsx";
 
 function CategoriesForm() {
   return (
-    <div>CategoriesForm</div>
-  )
+    <>
+      <HomeAdminNav/>
+      <div>New Category....</div>
+    </>
+  );
 }
 
-export default CategoriesForm
+export default CategoriesForm;

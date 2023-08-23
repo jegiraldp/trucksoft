@@ -23,7 +23,7 @@ function CategoriesForm() {
           }
         }}
       >
-        {({ handleChange, handleSubmit, values }) => (
+        {({ handleChange, handleSubmit, values,isSubmitting }) => (
           <Form onSubmit={handleSubmit}>
             <label>Name</label>
             <input
@@ -33,7 +33,10 @@ function CategoriesForm() {
               onChange={handleChange}
               value={values.nombre}
             />
-            <button type="submit">Save</button>
+            <button type="submit"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Salvando..." : "Salvar"}</button>
           </Form>
         )}
       </Formik>

@@ -12,6 +12,7 @@ function App() {
         Home
         <hr />
         <Routes>
+          <Route path="/" />
           <Route path="/homeadmin" element={<HomeAdmin />} />
           <Route path="/homeadmin/categories" element={<CategoriesPage />} />
           <Route

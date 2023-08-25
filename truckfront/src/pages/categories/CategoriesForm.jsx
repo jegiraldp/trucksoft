@@ -17,7 +17,7 @@ function CategoriesForm() {
           try {
             const respon = await createCategoryRequest(values);
             actions.resetForm()
-            console.log(respon);
+            //console.log(respon);
           } catch (error) {
             console.log(error);
           }

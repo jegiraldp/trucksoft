@@ -4,7 +4,7 @@ import { Form, Formik } from "formik";
 import { createCategoryRequest } from "../../api/categories.api.js";
 
 function CategoriesForm() {
-  return (
+   return (
     <>
       <HomeAdmin />
       <h3>Add category</h3>
@@ -16,14 +16,14 @@ function CategoriesForm() {
           //console.log(values);
           try {
             const respon = await createCategoryRequest(values);
-            actions.resetForm()
+            actions.resetForm();
             //console.log(respon);
           } catch (error) {
             console.log(error);
           }
         }}
       >
-        {({ handleChange, handleSubmit, values,isSubmitting }) => (
+        {({ handleChange, handleSubmit, values, isSubmitting }) => (
           <Form onSubmit={handleSubmit}>
             <label>Name</label>
             <input
@@ -33,10 +33,9 @@ function CategoriesForm() {
               onChange={handleChange}
               value={values.nombre}
             />
-            <button type="submit"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "Salvando..." : "Salvar"}</button>
+            <button type="submit" disabled={isSubmitting}>
+              {isSubmitting ? "Salvando..." : "Salvar"}
+            </button>
           </Form>
         )}
       </Formik>

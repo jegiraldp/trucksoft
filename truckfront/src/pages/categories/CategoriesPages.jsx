@@ -1,28 +1,15 @@
 import React from "react";
 import HomeAdmin from "../../components/HomeAdmin.jsx";
-import { useEffect, useState } from "react";
-import { getCategoriesRequest } from "../../api/categories.api.js";
-import { deleteCategoryRequest } from "../../api/categories.api.js";
+import { useEffect } from "react";
+import { useCategory } from "../../context/CategoryProvider.jsx";
 
-//eliminarCategories
-const handleDelete = async (id) => {
-  try {
-    await deleteCategoryRequest(id);
-    console.log("Category Deleted " + id);
-  } catch (error) {
-    console.log("Delete Error");
-  }
-};
+
 
 //cargarCategories
 function CategoriesPage() {
-  const [categories, setCategories] = useState([]);
-
+  const { categories,cargarCategories, deleteCategory } = useCategory();
   useEffect(() => {
-    async function cargarCategories() {
-      const respues = await getCategoriesRequest();
-      setCategories(respues.data);
-    }
+    
     cargarCategories();
   }, []);
 
@@ -46,7 +33,7 @@ function CategoriesPage() {
               <td>
                 <span onClick={() => console.log(cate.id)}>✏️</span>
                 &nbsp;&nbsp;&nbsp;
-                <span onClick={() => handleDelete(cate.id)}>❌</span>
+                <span onClick={() => deleteCategory(cate.id)}>❌</span>
               </td>
             </tr>
           ))}

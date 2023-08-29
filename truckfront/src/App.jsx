@@ -4,11 +4,12 @@ import CategoriesPage from "./pages/categories/CategoriesPages.jsx";
 import CategoriesForm from "./pages/categories/CategoriesForm.jsx";
 import HomeAdmin from "./components/HomeAdmin.jsx";
 import NotFound from "./pages/NotFound";
+import { CategoryContextProvider } from "./context/CategoryProvider.jsx";
 
 function App() {
   return (
     <BrowserRouter>
-      <>
+      <CategoryContextProvider>
         Home
         <hr />
         <Routes>
@@ -21,7 +22,7 @@ function App() {
           />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </>
+      </CategoryContextProvider>
     </BrowserRouter>
   );
 }

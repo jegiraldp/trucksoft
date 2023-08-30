@@ -1,26 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HomeAdmin from "../../components/HomeAdmin.jsx";
 import { Form, Formik } from "formik";
-import { createCategoryRequest } from "../../api/categories.api.js";
+import { useCategory } from "../../context/CategoryProvider.jsx";
+import { useParams, useNavigate } from "react-router-dom";
 
 function CategoriesForm() {
-   return (
+  const params = useParams();
+  const navigate = useNavigate();
+  const { createCategory, getCategory, updateCategory } = useCategory();
+  const [category, setCategory] = useState({
+    nombre: "",
+  });
+
+  useEffect(() => {
+    const loadCategory = async () => {
+      if (params.id) {
+        const category = await getCategory(params.id);
+        //console.log(category)
+        setCategory({
+          nombre: category.nombre,
+        });
+      }
+    };
+    loadCategory();
+  }, []);
+
+  return (
     <>
       <HomeAdmin />
-      <h3>Add category</h3>
+      <h3>{params.id ? "Edit Category" : "Create Category"}</h3>
       <Formik
-        initialValues={{
-          nombre: "",
-        }}
+        initialValues={category}
+        enableReinitialize={true}
         onSubmit={async (values, actions) => {
-          //console.log(values);
-          try {
-            const respon = await createCategoryRequest(values);
-            actions.resetForm();
-            //console.log(respon);
-          } catch (error) {
-            console.log(error);
+          if (params.id) {
+            await updateCategory(params.id, values);
+            navigate("/homeadmin/categories");
+          } else {
+            await createCategory(values);
+            navigate("/homeadmin/categories");
           }
+          setCategory({
+            nombre: "",
+          });
         }}
       >
         {({ handleChange, handleSubmit, values, isSubmitting }) => (
@@ -34,7 +56,7 @@ function CategoriesForm() {
               value={values.nombre}
             />
             <button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? "Salvando..." : "Salvar"}
+              {params.id ? "Editar":"Salvar" && isSubmitting ? "Salvando..." : "Salvar"}
             </button>
           </Form>
         )}

@@ -20,6 +20,8 @@ function App() {
             path="/homeadmin/categories/new"
             element={<CategoriesForm />}
           />
+          <Route path="/homeadmin/categories/edit/:id" element={<CategoriesForm />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </CategoryContextProvider>

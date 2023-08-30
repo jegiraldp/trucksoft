@@ -3,6 +3,9 @@ import { CategoryContext } from "./CategoryContext.jsx";
 import {
   getCategoriesRequest,
   deleteCategoryRequest,
+  createCategoryRequest,
+  getCategoryRequest,
+  updateCategoryRequest,
 } from "../api/categories.api.js";
 
 export const useCategory = () => {
@@ -26,16 +29,52 @@ export const CategoryContextProvider = ({ children }) => {
   const deleteCategory = async (id) => {
     try {
       await deleteCategoryRequest(id);
-      setCategories(categories.filter(category => category.id !== id))
-      console.log("Category Deleted " + id);
+      setCategories(categories.filter((category) => category.id !== id));
+      //console.log("Category Deleted " + id);
     } catch (error) {
       console.log("Delete Error");
     }
   };
 
+  //createCategory
+  const createCategory = async (category) => {
+    try {
+      await createCategoryRequest(category);
+      //setCategories([...categories, respon.data]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //get one category
+  const getCategory = async (id) => {
+    try {
+      const respon = await getCategoryRequest(id);
+      return respon.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //update category
+  const updateCategory = async (id, newFields) => {
+    try {
+      await updateCategoryRequest(id, newFields);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <CategoryContext.Provider
-      value={{ categories, cargarCategories, deleteCategory }}
+      value={{
+        categories,
+        cargarCategories,
+        deleteCategory,
+        createCategory,
+        getCategory,
+        updateCategory,
+      }}
     >
       {children}
     </CategoryContext.Provider>

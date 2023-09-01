@@ -19,7 +19,6 @@ function CategoriesPage() {
       <table border="0">
         <thead>
           <tr align="left">
-            
             <th>Name</th>
             <th>Opciones</th>
           </tr>
@@ -27,16 +26,12 @@ function CategoriesPage() {
         <tbody>
           {categories.map((cate) => (
             <tr key={cate.id}>
-              
               <td>{cate.nombre}</td>
-              <td>&nbsp;&nbsp;&nbsp;
-                <span
-                  onClick={() => navigate(`./edit/${cate.id}`)}
-                >
-                  &#9998; 
-                </span>
+              <td>
                 &nbsp;&nbsp;&nbsp;
-                <span onClick={() => deleteCategory(cate.id)}>&#9932;</span>
+                <span onClick={() => navigate(`./edit/${cate.id}`)}>✏️</span>
+                &nbsp;&nbsp;&nbsp;
+                <span onClick={() => deleteCategory(cate.id)}>❌</span>
               </td>
             </tr>
           ))}

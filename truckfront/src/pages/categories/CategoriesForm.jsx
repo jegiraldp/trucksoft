@@ -23,6 +23,7 @@ function CategoriesForm() {
       }
     };
     loadCategory();
+    
   }, []);
 
   return (

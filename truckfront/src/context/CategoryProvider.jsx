@@ -31,8 +31,10 @@ export const CategoryContextProvider = ({ children }) => {
       await deleteCategoryRequest(id);
       setCategories(categories.filter((category) => category.id !== id));
       //console.log("Category Deleted " + id);
+      return null
     } catch (error) {
-      console.log("Delete Error");
+      return "DB error "
+     // console.log("Delete Error");
     }
   };
 

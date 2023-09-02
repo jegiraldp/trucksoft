@@ -1,6 +1,5 @@
-import React from "react";
 import HomeAdmin from "../../components/HomeAdmin.jsx";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useCategory } from "../../context/CategoryProvider.jsx";
 import { useNavigate } from "react-router-dom";
 
@@ -8,8 +7,11 @@ import { useNavigate } from "react-router-dom";
 function CategoriesPage() {
   const { categories, cargarCategories, deleteCategory } = useCategory();
   const navigate = useNavigate();
+  const [mensaje, setMensaje] = useState("");
+  const [elId, setElId] = useState(0);
   useEffect(() => {
     cargarCategories();
+    
   }, []);
 
   return (
@@ -31,7 +33,23 @@ function CategoriesPage() {
                 &nbsp;&nbsp;&nbsp;
                 <span onClick={() => navigate(`./edit/${cate.id}`)}>✏️</span>
                 &nbsp;&nbsp;&nbsp;
-                <span onClick={() => deleteCategory(cate.id)}>❌</span>
+                <span
+                  onClick={async () => {
+                    setElId(0)
+                    const resul = await deleteCategory(cate.id);
+                    if (resul) {
+                      setMensaje(resul);
+                      setElId(cate.id);
+                    }
+                  }}
+                >
+                  ❌
+                </span>
+                {elId == cate.id && (
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{mensaje}⚠️</span>
+                 
+                )}
+              
               </td>
             </tr>
           ))}

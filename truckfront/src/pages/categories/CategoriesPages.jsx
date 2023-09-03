@@ -2,6 +2,7 @@ import HomeAdmin from "../../components/HomeAdmin.jsx";
 import { useEffect, useState } from "react";
 import { useCategory } from "../../context/CategoryProvider.jsx";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 //cargarCategories
 function CategoriesPage() {
@@ -11,13 +12,17 @@ function CategoriesPage() {
   const [elId, setElId] = useState(0);
   useEffect(() => {
     cargarCategories();
-    
   }, []);
 
   return (
     <>
       <HomeAdmin />
-      <h3>Categories</h3>
+      <h3>
+        Categories
+        <span onClick={() => navigate("/homeadmin/categories/new")}>
+          &nbsp;&nbsp;&nbsp;➕
+        </span>
+      </h3>
       <table border="0">
         <thead>
           <tr align="left">
@@ -35,7 +40,7 @@ function CategoriesPage() {
                 &nbsp;&nbsp;&nbsp;
                 <span
                   onClick={async () => {
-                    setElId(0)
+                    setElId(0);
                     const resul = await deleteCategory(cate.id);
                     if (resul) {
                       setMensaje(resul);
@@ -47,9 +52,7 @@ function CategoriesPage() {
                 </span>
                 {elId == cate.id && (
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{mensaje}⚠️</span>
-                 
                 )}
-              
               </td>
             </tr>
           ))}

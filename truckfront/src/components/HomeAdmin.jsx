@@ -7,15 +7,11 @@ function HomeAdmin() {
       <h3>Home Admin..</h3>
       <ul>
         <li>
-          <Link to="/homeadmin/categories">Category List..</Link>
-          &nbsp;|&nbsp;
-          <Link to="/homeadmin/categories/new">New Category</Link>
+          <Link to="/homeadmin/categories">Categories</Link>
         </li>
 
         <li>
-          <Link to="/homeadmin/elements">Element List</Link>
-          &nbsp;|&nbsp;
-          <Link to="/homeadmin/elements/new">New Element</Link>
+          <Link to="/homeadmin/elements">Elements</Link>
         </li>
                
       </ul>

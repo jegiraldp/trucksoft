@@ -29,6 +29,7 @@ function CategoriesForm() {
   return (
     <>
       <HomeAdmin />
+      <span onClick={() => navigate("/homeadmin/categories")}>👈Back</span>
       <h3>{params.id ? "Edit Category" : "Create Category"}</h3>
       <Formik
         initialValues={category}

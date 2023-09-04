@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { CategoryContext } from "./CategoryContext.jsx";
+import { CategoryContext } from "./TheContext.jsx";
 import {
   getCategoriesRequest,
   deleteCategoryRequest,

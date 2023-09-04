@@ -2,7 +2,7 @@ import HomeAdmin from "../../components/HomeAdmin.jsx";
 import { useEffect, useState } from "react";
 import { useCategory } from "../../context/CategoryProvider.jsx";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+
 
 //cargarCategories
 function CategoriesPage() {
@@ -23,7 +23,7 @@ function CategoriesPage() {
           &nbsp;&nbsp;&nbsp;➕
         </span>
       </h3>
-      <table border="0">
+      <table border="0" width="60%">
         <thead>
           <tr align="left">
             <th>Name</th>

@@ -37,7 +37,7 @@ function CategoriesForm() {
         validate={(values)=>{
           let errores = {};
           if (!values.nombre) {
-            errores.nombre =  "⚠️ Falta digitar nombre !!";
+            errores.nombre =  "⚠️ Write Category's name";
           }
           
           return errores;
@@ -63,14 +63,14 @@ function CategoriesForm() {
             <input
               type="text"
               name="nombre"
-              placeholder="Write Category name"
+              placeholder="Write Category's name"
               onChange={handleChange}
               value={values.nombre}
               onBlur={handleBlur}
             />
                        
             <button type="submit" disabled={isSubmitting}>
-              {params.id ? "Editar":"Salvar" && isSubmitting ? "Salvando..." : "Salvar"}
+              {params.id ? "Edit":"Save" && isSubmitting ? "Saving..." : "Save"}
             </button>
             {touched.nombre && errors.nombre &&
             <div>{errors.nombre}</div>

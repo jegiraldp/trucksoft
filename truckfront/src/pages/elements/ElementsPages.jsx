@@ -1,9 +1,69 @@
-import React from 'react'
+import HomeAdmin from "../../components/HomeAdmin.jsx";
+import { useEffect } from "react";
+import { useElement } from "../../context/ElementProvider.jsx";
+import { useCategory } from "../../context/CategoryProvider.jsx";
+import { useNavigate } from "react-router-dom";
 
-function ElementsPages() {
+
+//loadElements
+function ElementsPage() {
+  const { elements, cargarElements } = useElement();
+  const { categories } = useCategory();
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    cargarElements();
+  }, []);
+
+  const getCategoryName = (categoryId)=>{
+    const category = categories.find((cat)=>cat.id===categoryId)
+    return category ? category.nombre : "N/A"
+  }
+
   return (
-    <div>ElementsPages</div>
-  )
+    <>
+      <HomeAdmin />
+      <h3>
+        Elements
+        <span onClick={() => navigate("/homeadmin/elements/new")}>
+          &nbsp;&nbsp;&nbsp;➕
+        </span>
+      </h3>
+      <table border="0" width="80%">
+        <thead>
+          <tr align="left">
+            <th>Code</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {elements.map((ele) => (
+            <tr key={ele.id}>
+              <td>{ele.codigo}</td>
+              <td>{ele.nombre}</td>
+              <td>{ele.descripcion}</td>
+              <td>{getCategoryName(ele.idCategoria)}</td>
+              <td>
+                &nbsp;&nbsp;&nbsp;
+                <span onClick={() => navigate(`./edit/${cate.id}`)}>✏️</span>
+                &nbsp;&nbsp;&nbsp;
+                <span
+                  onClick={async () => {
+                    
+                  }}
+                >
+                  ❌
+                </span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
 }
 
-export default ElementsPages
+export default ElementsPage;

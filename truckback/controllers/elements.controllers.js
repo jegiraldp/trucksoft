@@ -3,7 +3,7 @@ import { pool } from "../db.js";
 export const getElements = async (req, res) => {
   try {
     const [result] = await pool.query(
-      "select * from elementos order by codigo asc"
+      "select * from elementos order by idCategoria asc"
     );
     res.json(result);
   } catch (error) {

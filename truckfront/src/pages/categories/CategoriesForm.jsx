@@ -23,7 +23,6 @@ function CategoriesForm() {
       }
     };
     loadCategory();
-    
   }, []);
 
   return (
@@ -33,13 +32,12 @@ function CategoriesForm() {
       <h3>{params.id ? "Edit Category" : "Create Category"}</h3>
       <Formik
         initialValues={category}
-
-        validate={(values)=>{
+        validate={(values) => {
           let errores = {};
           if (!values.nombre) {
-            errores.nombre =  "⚠️ Write Category's name";
+            errores.nombre = "⚠️ Write Category's name";
           }
-          
+
           return errores;
         }}
         enableReinitialize={true}
@@ -51,13 +49,21 @@ function CategoriesForm() {
             await createCategory(values);
             navigate("/homeadmin/categories");
           }
-          
+
           setCategory({
             nombre: "",
           });
         }}
       >
-        {({ handleChange, handleBlur,handleSubmit, values, errors, isSubmitting,touched }) => (
+        {({
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          values,
+          errors,
+          isSubmitting,
+          touched,
+        }) => (
           <Form onSubmit={handleSubmit} width="500px">
             <label>Name</label>
             <input
@@ -68,13 +74,15 @@ function CategoriesForm() {
               value={values.nombre}
               onBlur={handleBlur}
             />
-                       
+
             <button type="submit" disabled={isSubmitting}>
-              {params.id ? "Edit":"Save" && isSubmitting ? "Saving..." : "Save"}
+              {params.id
+                ? "Edit"
+                : "Save" && isSubmitting
+                ? "Saving..."
+                : "Save"}
             </button>
-            {touched.nombre && errors.nombre &&
-            <div>{errors.nombre}</div>
-            }
+            {touched.nombre && errors.nombre && <div>{errors.nombre}</div>}
           </Form>
         )}
       </Formik>

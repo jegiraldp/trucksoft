@@ -14,7 +14,7 @@ export const getElements = async (req, res) => {
 export const getElement = async (req, res) => {
   try {
     const [result] = await pool.query(
-      "select * from elementos where codigo = ?",
+      "select * from elementos where id = ?",
       [req.params.id]
     );
     if (result.length === 0)

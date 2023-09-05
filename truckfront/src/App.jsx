@@ -9,28 +9,35 @@ import NotFound from "./pages/NotFound";
 import { CategoryContextProvider } from "./context/CategoryProvider.jsx";
 import { ElementContextProvider } from "./context/ElementProvider.jsx";
 
-
 function App() {
   return (
     <BrowserRouter>
-      <CategoryContextProvider><ElementContextProvider>
-        Home
-        <hr />
-        <Routes>
-          <Route path="/" />
-          <Route path="/homeadmin" element={<HomeAdmin />} />
-          <Route path="/homeadmin/categories" element={<CategoriesPage />} />
-          <Route
-            path="/homeadmin/categories/new"
-            element={<CategoriesForm />}
-          />
-          <Route path="/homeadmin/categories/edit/:id" element={<CategoriesForm />} />
-          
-          <Route path="/homeadmin/elements" element={<ElementsPage />} />
-          <Route path="/homeadmin/elements/new" element={<ElementsForm />}/>
+      <CategoryContextProvider>
+        <ElementContextProvider>
+          Home
+          <hr />
+          <Routes>
+            <Route path="/" />
+            <Route path="/homeadmin" element={<HomeAdmin />} />
+            <Route path="/homeadmin/categories" element={<CategoriesPage />} />
+            <Route
+              path="/homeadmin/categories/new"
+              element={<CategoriesForm />}
+            />
+            <Route
+              path="/homeadmin/categories/edit/:id"
+              element={<CategoriesForm />}
+            />
 
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+            <Route path="/homeadmin/elements" element={<ElementsPage />} />
+            <Route path="/homeadmin/elements/new" element={<ElementsForm />} />
+            <Route
+              path="/homeadmin/elements/edit/:id"
+              element={<ElementsForm />}
+            />
+
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </ElementContextProvider>
       </CategoryContextProvider>
     </BrowserRouter>

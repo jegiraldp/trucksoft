@@ -1,24 +1,25 @@
 import HomeAdmin from "../../components/HomeAdmin.jsx";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useElement } from "../../context/ElementProvider.jsx";
 import { useCategory } from "../../context/CategoryProvider.jsx";
 import { useNavigate } from "react-router-dom";
 
-
 //loadElements
 function ElementsPage() {
-  const { elements, cargarElements } = useElement();
-  const { categories } = useCategory();
+  const { elements, cargarElements, deleteElement } = useElement();
+  const { categories, cargarCategories } = useCategory();
+  const [mensaje, setMensaje] = useState("");
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     cargarElements();
+    cargarCategories();
   }, []);
 
-  const getCategoryName = (categoryId)=>{
-    const category = categories.find((cat)=>cat.id===categoryId)
-    return category ? category.nombre : "N/A"
-  }
+  const getCategoryName = (categoryId) => {
+    const category = categories.find((cat) => cat.id === categoryId);
+    return category ? category.nombre : "N/A";
+  };
 
   return (
     <>
@@ -48,11 +49,14 @@ function ElementsPage() {
               <td>{getCategoryName(ele.idCategoria)}</td>
               <td>
                 &nbsp;&nbsp;&nbsp;
-                <span onClick={() => navigate(`./edit/${cate.id}`)}>✏️</span>
+                <span onClick={() => navigate(`./edit/${ele.id}`)}>✏️</span>
                 &nbsp;&nbsp;&nbsp;
                 <span
                   onClick={async () => {
-                    
+                    const resul = await deleteElement(ele.id);
+                    if (resul) {
+                      setMensaje(resul);
+                    }
                   }}
                 >
                   ❌
